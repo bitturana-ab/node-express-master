@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 const user = require("./routes/user.js");
+const cookieParser = require("cookie-parser");
+const cookieValidator = require("./cookieValidator.js");
 
 app.use(express.static("public"));
 
@@ -12,6 +14,17 @@ app.get("/", (req, res) => {
 
 // user routes from different file
 app.use("/user", user);
+
+// cookie validator function
+
+async function validateCookies(req, res, next) {
+  await cookieValidator(req.cookies);
+  next();
+}
+
+app.use(cookieParser());
+
+app.use(validateCookies);
 
 // req paramas from url
 app.get("/user/:userId/books/:bookId", (req, res) => {

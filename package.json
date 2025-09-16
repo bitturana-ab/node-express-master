@@ -1,12 +1,12 @@
 {
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "express": "^5.1.0"
   },
   "name": "nodeexpressbackend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
